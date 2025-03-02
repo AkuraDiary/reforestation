@@ -7,6 +7,7 @@ use std::env;
 use std::fs::OpenOptions;
 use std::fs::{self, File};
 use std::io::Write;
+use std::path::PathBuf;
 use std::process::Command as Cmd;
 use std::process::Output;
 
@@ -44,8 +45,9 @@ fn main() {
     let target_dir: &String = &args.dir;
 
     // Create target directory if it doesn't exist
-    fs::create_dir_all(target_dir).expect("Failed to create directory");
-    env::set_current_dir(target_dir).expect("Failed to change directory");
+    let target_path: PathBuf = fs::canonicalize(target_dir).unwrap_or_else(|_| target_dir.into());
+    fs::create_dir_all(&target_path).expect("Failed to create directory");
+    env::set_current_dir(&target_path).expect("Failed to change directory");
 
     // Initialize Git repository if not already initialized
     if !fs::metadata(".git").is_ok() {
