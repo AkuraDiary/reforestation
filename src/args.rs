@@ -1,7 +1,19 @@
 use clap::Parser;
 
 #[derive(Parser, Debug)]
-#[command(version, about = "Generates dummy GitHub commit history")]
+#[command(
+    version,
+    author = "Ahsan Azizan, contact@ahsanzizan.xyz",
+    about = "Generates dummy GitHub commit history",
+    version = "1.0.0",
+    help_template = "\
+{before-help}{name} {version}
+{author-with-newline}{about-with-newline}
+{usage-heading} {usage}
+
+{all-args}{after-help}
+"
+)]
 pub struct Args {
     /// Number of days to go back
     #[arg(long, default_value_t = 366)]
