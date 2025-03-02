@@ -1,0 +1,25 @@
+use clap::Parser;
+
+#[derive(Parser, Debug)]
+#[command(version, about = "Generates dummy GitHub commit history")]
+pub struct Args {
+    /// Number of days to go back
+    #[arg(long, default_value_t = 366)]
+    pub days: i32,
+
+    /// Number of commits per day
+    #[arg(long, default_value_t = 10)]
+    pub freq: i32,
+
+    /// Randomize commit frequency
+    #[arg(long)]
+    pub random: bool,
+
+    /// GitHub repository URL
+    #[arg(long)]
+    pub repo: String,
+
+    /// Target directory for commits
+    #[arg(long, default_value = "dummy-git-repo")]
+    pub dir: String,
+}
