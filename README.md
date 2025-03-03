@@ -39,7 +39,7 @@ Run the CLI with the following options:
 | `--repo`   | GitHub repository URL                                    |
 | `--dir`    | Target directory for commits (default: `dummy-git-repo`) |
 
-This could be wrong tho, run the `--help` for more detailed information.
+This could be wrong tho (because I often forgot to update the README), run the `--help` for more detailed information.
 
 ## License
 
