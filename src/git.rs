@@ -15,7 +15,6 @@ pub fn initialize_git(repo_url: &str) {
         .expect("Failed to check remote");
 
     let remote_str: Cow<'_, str> = String::from_utf8_lossy(&remote_output.stdout);
-    // let remote_str: Cow<'_, str> = String::from_utf8_lossy(&remote_output.stdout);
 
     if !remote_str.contains("origin") {
         Cmd::new("git")
@@ -34,11 +33,6 @@ pub fn clone_git(repo_url: &str) {
             .status()
             .expect("Failed to clone Git");
     }
-
-    // let remote_output: Output = Cmd::new("git")
-    //     .args(&["remote", "-v"])
-    //     .output()
-    //     .expect("Failed to check remote");
 }
 
 pub fn finalize_and_push(is_init: &bool) {

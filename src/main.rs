@@ -22,14 +22,11 @@ fn main() {
         env::set_current_dir(&target_path).expect("Failed to change directory");
         git::initialize_git(&args.repo);
     } else {
-        git::clone_git(&args.repo);
-        
+        git::clone_git(&args.repo);    
         repo_name = args.repo.split('/').last().unwrap_or_default();
         repo_name = repo_name.strip_suffix(".git").unwrap_or(repo_name);
         let cloned_repo_path = PathBuf::from(repo_name);
-        
         env::set_current_dir(&cloned_repo_path).expect("Failed to change to cloned repository directory");
-
     }
     
     let now: DateTime<Utc> = Utc::now();
