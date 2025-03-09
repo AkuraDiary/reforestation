@@ -34,4 +34,9 @@ pub struct Args {
     /// Target directory for commits
     #[arg(long, default_value = "dummy-git-repo")]
     pub dir: String,
+
+    // Additional Argument to initalise the repo, 
+    // I changed the default --repo args to call the function to clone repo instead of initializing it
+    #[arg(long)]
+    pub init : bool
 }
