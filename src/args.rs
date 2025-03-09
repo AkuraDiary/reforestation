@@ -5,7 +5,7 @@ use clap::Parser;
     version,
     author = "Ahsan Azizan, contact@ahsanzizan.xyz",
     about = "Generates dummy GitHub commit history",
-    version = "1.0.0",
+    version = "1.1.0",
     help_template = "\
 {before-help}{name} {version}
 {author-with-newline}{about-with-newline}
@@ -34,4 +34,10 @@ pub struct Args {
     /// Target directory for commits
     #[arg(long, default_value = "dummy-git-repo")]
     pub dir: String,
+
+    // Additional Argument to initalise the repo, 
+    // I changed the default --repo args to call the function to clone repo instead of initializing it
+    /// Initialize new repository from repository link provided instead of cloning
+    #[arg(long)]
+    pub init : bool
 }
